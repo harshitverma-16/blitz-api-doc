@@ -1,0 +1,34 @@
+site_name: Blitz API Documentation
+
+theme:
+  name: material
+  favicon: favicon.ico
+  logo: icon.png
+  features:
+    - navigation.expand
+    - content.code.copy
+    - navigation.sections
+    - navigation.tracking
+    - toc.integrate
+
+  copyright: "this is copyright"
+
+extra_css:
+  - css/custom.css
+  
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+nav:
+
+  - Introduction: index.md
+  - Authentication: Authentication.md
+
+  - Market Data APIs:
+    - Last Trading Price: LTP.md
+    - Option Chain: optionchain.md
+    - Market Quote: marketquote.md
+    - Historical Data: historicaldata.md
+  
