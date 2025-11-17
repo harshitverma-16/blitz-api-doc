@@ -9,22 +9,31 @@ theme:
     - content.code.copy
     - navigation.sections
     - navigation.tracking
-    - toc.integrate
+    - toc.follow
+
 
   copyright: "this is copyright"
 
 extra_css:
   - css/custom.css
+
   
 markdown_extensions:
   - admonition
+  - attr_list
   - pymdownx.details
   - pymdownx.superfences
+  - toc:
+      toc_depth: 2
 
 nav:
 
   - Introduction: index.md
   - Authentication: Authentication.md
+  - Trading APIs:
+    - Orders : orders.md
+    - Trades : trades.md
+    - Positions : positions.md
   
 
   - Market Data APIs:
