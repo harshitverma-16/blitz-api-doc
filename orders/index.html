@@ -1,0 +1,1942 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Authentication/">
+      
+      
+        <link rel="next" href="../trades/">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Orders - Blitz API Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-fetching-orders" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Blitz API Documentation" class="md-header__button md-logo" aria-label="Blitz API Documentation" data-md-component="logo">
+      
+  <img src="../icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Blitz API Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Orders
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Blitz API Documentation" class="md-nav__button md-logo" aria-label="Blitz API Documentation" data-md-component="logo">
+      
+  <img src="../icon.png" alt="logo">
+
+    </a>
+    Blitz API Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Trading APIs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Trading APIs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Orders
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orders
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-fetching-orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Fetching Orders
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-retrieve-order-by-blitzorderid" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Retrieve Order by BlitzOrderID
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-place-an-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Place an Order
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-modify-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Modify Order
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cancel-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Cancel Order
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Trades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../positions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Positions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Market Data APIs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Market Data APIs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Last Trading Price
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../optionchain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Option Chain
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../marketquote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Quote
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../historicaldata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Historical Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SDK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-fetching-orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Fetching Orders
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-retrieve-order-by-blitzorderid" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Retrieve Order by BlitzOrderID
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-place-an-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Place an Order
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-modify-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Modify Order
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cancel-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Cancel Order
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Orders</h1>
+
+<p>The order APIs let you place orders of various types, modify or cancel pending orders, and retrieve daily order history. With OMS(Order Management System.), you can manage your trades efficiently, execute orders in real time, track their status, and maintain full control over your portfolio .</p>
+<p>These endpoints let you place, modify, cancel, and retrieve orders efficiently.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Endpoint</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><a href="#fetching-orders">orders</a></td>
+<td>Retrieve the list of all orders (open and executed) for the day.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><a href="#get-order-by-id">orders/blitzOrderId</a></td>
+<td>Get all states of a specific order by its BlitzOrderId.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><a href="#place-order">orders/placeOrder</a></td>
+<td>Place an order of a particular variety.</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><a href="#modify-order">orders/modifyOrder</a></td>
+<td>Modify an open or pending order.</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><a href="#cancel-order">order/cancelOrder</a></td>
+<td>Cancel an open or pending order.</td>
+</tr>
+</tbody>
+</table>
+<h4 class="no-toc" id="glossary-notes">Glossary / Notes<a class="headerlink" href="#glossary-notes" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>orders</code> → Refers to all orders for the day.  </li>
+<li><code>placeOrder</code> → Endpoint to create a new order.  </li>
+<li><code>modifyOrder</code> → Endpoint to update an existing order.  </li>
+<li><code>cancelOrder</code> → Endpoint to delete/cancel an order.</li>
+</ul>
+<h4 id="oms-api-order-related-constants">OMS API: Order-Related Constants<a class="headerlink" href="#oms-api-order-related-constants" title="Permanent link">&para;</a></h4>
+<p>OMS API uses several enum constants when placing, managing, and tracking orders. These constants help standardize order types, sides, statuses, and execution details.</p>
+<table>
+<thead>
+<tr>
+<th>Enum</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OrderType</code></td>
+<td><code>Market</code>, <code>Limit</code>, <code>Stop</code>, <code>StopLimit</code>, <code>MarketIfTouched</code>, <code>MarketLimit</code>, <code>Pegged</code></td>
+<td>Type of order to place</td>
+</tr>
+<tr>
+<td><code>OrderSide</code></td>
+<td><code>Buy</code>, <code>Sell</code></td>
+<td>Buy or sell side of the order</td>
+</tr>
+<tr>
+<td><code>TimeInForce</code></td>
+<td><code>GFD</code>, <code>GTC</code>, <code>IOC</code>, <code>FOK</code>, <code>GTD</code></td>
+<td>Duration/order validity</td>
+</tr>
+<tr>
+<td><code>OrderStatus</code></td>
+<td><code>New</code>, <code>PartiallyFilled</code>, <code>Filled</code>, <code>Cancelled</code>, <code>Rejected</code></td>
+<td>Current status of an order</td>
+</tr>
+<tr>
+<td><code>ExecutionType</code></td>
+<td><code>New</code>, <code>PartialFill</code>, <code>Fill</code>, <code>Cancelled</code>, <code>Replace</code>, <code>Rejected</code>, <code>Trade</code></td>
+<td>Execution events for an order</td>
+</tr>
+<tr>
+<td><code>ProductType</code></td>
+<td><code>MIS</code>, <code>NRML</code>, <code>CNC</code>, <code>MTF</code>, <code>ALL</code></td>
+<td>Product type for the order (Intraday, Delivery, etc.)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> All enum values are used exactly as defined when interacting with the OMS APIs for placing, modifying, canceling, and tracking orders.</p>
+</blockquote>
+<h2 id="1-fetching-orders">1. Fetching Orders<a class="headerlink" href="#1-fetching-orders" title="Permanent link">&para;</a></h2>
+<p>Retrieve a complete list of all orders placed by a user for the current trading day. This includes:</p>
+<ul>
+<li><strong>Open orders:</strong> Orders that have been placed but not yet executed.  </li>
+<li><strong>Pending orders:</strong> Orders waiting for certain conditions (like trigger price) before execution.  </li>
+<li><strong>Executed orders:</strong> Orders that have been fully or partially filled.  </li>
+<li><strong>Cancelled orders:</strong> Orders that were cancelled either by the user or the system.</li>
+</ul>
+<p>Using this endpoint, you can:</p>
+<ul>
+<li>Monitor the real-time status of all your orders.  </li>
+<li>Track quantities filled, remaining, and average execution prices.  </li>
+<li>Identify orders that were rejected or failed.  </li>
+<li>Integrate order tracking into dashboards, trading strategies, or reporting tools.</li>
+</ul>
+<p>This endpoint provides a <strong>centralized view of your daily trading activity</strong>, making it easier to manage your portfolio and maintain control over all executed, pending, or cancelled trades.</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span><span class="s1">&#39;GET&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;http://api.blitz.com/api/order&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;accept: */*&#39;</span>
+</code></pre></div>
+<h4 id="request-structure">Request Structure<a class="headerlink" href="#request-structure" title="Permanent link">&para;</a></h4>
+<ul>
+<li>No Body</li>
+</ul>
+<h4 id="response-structure">Response Structure<a class="headerlink" href="#response-structure" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Click to view Order List JSON Body</summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;163d2248-e81b-4cb3-9482-bb65e3e4ab3f&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;36250ee3-ad08-4e09-862f-83deee8cdef9&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_instance_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a78887e2-a295-4d21-b30d-a90cd170aad3&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_instance_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDEA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manual Trading&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;iv_object_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDEA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000014366</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_segment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NSECM&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000014366</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instrument_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDEA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instrument_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;blitz_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3367140289</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;execution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SIDD09&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Market&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_side&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PendingNew&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_stop_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_trigger_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_traded_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cumulative_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;leaves_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tif&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GFD&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079432921</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_disclosed_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;minimum_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_generated_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079432921</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_request_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079432921</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_transact_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079432921</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_modification_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_trade_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;average_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;average_traded_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_fictive_order&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reject_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reject_type_reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NormalOrder&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ctcl_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;153541&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;algo_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;algo_category_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;clearing_firm_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;pan_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GABPB5317L&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_order_completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;user_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;execution_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;General&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;sequence_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;163d2248-e81b-4cb3-9482-bb65e3e4ab3f&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;36250ee3-ad08-4e09-862f-83deee8cdef9&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_instance_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a78887e2-a295-4d21-b30d-a90cd170aad3&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_instance_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDEA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manual Trading&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;iv_object_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDEA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000014366</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_segment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NSECM&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000014366</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instrument_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDEA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instrument_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;blitz_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3367140289</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3084826041727943&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;execution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3084826041730509&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SIDD09&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Market&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_side&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;New&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_stop_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_trigger_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_traded_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cumulative_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;leaves_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tif&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GFD&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079432921</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_disclosed_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;minimum_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_generated_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079432921</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_request_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079432921</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_transact_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760099232000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_modification_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_trade_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;average_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;average_traded_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_fictive_order&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reject_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reject_type_reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NormalOrder&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ctcl_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;153541&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;algo_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;algo_category_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;clearing_firm_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;pan_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GABPB5317L&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_order_completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;user_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;execution_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;New&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;General&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;sequence_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;163d2248-e81b-4cb3-9482-bb65e3e4ab3f&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;36250ee3-ad08-4e09-862f-83deee8cdef9&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_instance_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a78887e2-a295-4d21-b30d-a90cd170aad3&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_instance_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDEA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manual Trading&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;iv_object_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDEA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000014366</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_segment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NSECM&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000014366</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instrument_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDEA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instrument_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;blitz_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3367140289</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3084826041727943&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;execution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3084826041730510&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SIDD09&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Market&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_side&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Filled&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_stop_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_trigger_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_traded_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">6.87</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cumulative_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;leaves_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tif&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GFD&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079432922</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_disclosed_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;minimum_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_generated_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079432922</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_request_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079432922</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_transact_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079432000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_modification_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_trade_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;average_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">6.87</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;average_traded_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_fictive_order&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reject_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reject_type_reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NormalOrder&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ctcl_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;153541&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;algo_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;algo_category_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;clearing_firm_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;pan_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GABPB5317L&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_order_completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;user_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;execution_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fill&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;General&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;sequence_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;163d2248-e81b-4cb3-9482-bb65e3e4ab3f&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;36250ee3-ad08-4e09-862f-83deee8cdef9&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_instance_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a78887e2-a295-4d21-b30d-a90cd170aad3&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_instance_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDEA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manual Trading&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;iv_object_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDEA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000014366</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_segment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NSECM&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000014366</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instrument_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDEA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instrument_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;blitz_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3367140290</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;execution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SIDD09&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Limit&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_side&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PendingNew&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">6.87</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_stop_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_trigger_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_traded_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cumulative_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;leaves_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tif&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GFD&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079456283</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_disclosed_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;minimum_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_generated_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079456283</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_request_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079456283</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;exchange_transact_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760079456283</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_modification_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_trade_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;average_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;average_traded_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_fictive_order&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reject_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reject_type_reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NormalOrder&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ctcl_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;153541&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;algo_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;algo_category_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;clearing_firm_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;pan_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GABPB5317L&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_order_completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;user_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;execution_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;strategy_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;General&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;sequence_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<span class="p">]</span>
+</code></pre></div>
+</details>
+
+<h2 id="2-retrieve-order-by-blitzorderid">2. Retrieve Order by BlitzOrderID<a class="headerlink" href="#2-retrieve-order-by-blitzorderid" title="Permanent link">&para;</a></h2>
+<p>Fetch the details of a specific order in the OMS system using its unique BlitzOrderId. This endpoint returns all order-related information including status, executed trades, and metadata.</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span><span class="s1">&#39;GET&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;http://api.blitz.com/api/orders/{BlitzOrderId}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;accept: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer YOUR_JWT_TOKEN&#39;</span>
+</code></pre></div>
+<h4 id="request-structure_1">Request Structure<a class="headerlink" href="#request-structure_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>No Body Required.</li>
+</ul>
+<h4 id="response-structuer">Response Structuer<a class="headerlink" href="#response-structuer" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Click to view Order by BlitzOrderID JSON Body</summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;163d2248-e81b-4cb3-9482-bb65e3e4ab3f&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;36250ee3-ad08-4e09-862f-83deee8cdef9&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_instance_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8ababa4e-616c-468e-8672-70f64a8b9c8d&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_instance_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RELIANCE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manual Trading&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iv_object_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RELIANCE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000002885</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_segment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NSECM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000002885</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instrument_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RELIANCE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instrument_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;blitz_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3345637833</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;execution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SIDD09&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Limit&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_side&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PendingNew&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1300.8</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_stop_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_trigger_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_traded_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cumulative_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;leaves_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tif&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GFD&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760333421586</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_disclosed_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;minimum_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_generated_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760333421586</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_request_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760333421586</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_transact_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760333421585</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_modification_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_trade_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;average_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;average_traded_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;is_fictive_order&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;reject_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;reject_type_reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NormalOrder&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ctcl_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;153541&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;algo_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;algo_category_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;clearing_firm_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pan_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GABPB5317L&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;is_order_completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;user_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;execution_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;General&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sequence_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;163d2248-e81b-4cb3-9482-bb65e3e4ab3f&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;36250ee3-ad08-4e09-862f-83deee8cdef9&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_instance_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8ababa4e-616c-468e-8672-70f64a8b9c8d&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_instance_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RELIANCE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manual Trading&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iv_object_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RELIANCE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000002885</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_segment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NSECM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000002885</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instrument_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RELIANCE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instrument_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;blitz_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3345637833</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3085784509505998&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;execution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3085784509505998&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SIDD09&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Limit&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_side&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;New&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1300.8</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_stop_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_trigger_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_traded_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cumulative_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;leaves_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tif&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GFD&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760333421594</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_disclosed_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;minimum_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_generated_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760333421594</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_request_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760333421594</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_transact_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760333421000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_modification_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_trade_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;average_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;average_traded_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;is_fictive_order&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;reject_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;reject_type_reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NormalOrder&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ctcl_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;153541&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;algo_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;algo_category_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;clearing_firm_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pan_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GABPB5317L&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;is_order_completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;user_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;execution_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;New&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;General&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sequence_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;163d2248-e81b-4cb3-9482-bb65e3e4ab3f&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;36250ee3-ad08-4e09-862f-83deee8cdef9&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_instance_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8ababa4e-616c-468e-8672-70f64a8b9c8d&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_instance_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RELIANCE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manual Trading&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iv_object_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RELIANCE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000002885</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_segment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NSECM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000002885</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instrument_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RELIANCE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instrument_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;blitz_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3345637833</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3085784509505998&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;execution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3085784509505999&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SIDD09&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Limit&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_side&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Filled&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1300.8</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_stop_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_trigger_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_traded_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1300.8</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cumulative_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;leaves_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tif&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GFD&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760333421594</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_disclosed_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;minimum_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_generated_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760333421594</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_request_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760333421594</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_transact_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1760333421000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_modification_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_trade_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;average_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1300.8</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;average_traded_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;is_fictive_order&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;reject_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;reject_type_reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NormalOrder&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ctcl_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;153541&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;algo_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;algo_category_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;clearing_firm_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pan_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GABPB5317L&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;is_order_completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;user_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;execution_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fill&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;General&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sequence_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+</details>
+
+<h4 id="field-descriptions">Field Descriptions<a class="headerlink" href="#field-descriptions" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Internal unique ID of the order</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>string</td>
+<td>ID of the entity (user) who placed the order</td>
+</tr>
+<tr>
+<td>strategy_id</td>
+<td>string</td>
+<td>Strategy associated with the order, if any</td>
+</tr>
+<tr>
+<td>strategy_instance_id</td>
+<td>string</td>
+<td>Instance of the strategy executing the order</td>
+</tr>
+<tr>
+<td>strategy_instance_name</td>
+<td>string</td>
+<td>Name of the strategy instance</td>
+</tr>
+<tr>
+<td>strategy_name</td>
+<td>string</td>
+<td>Name of the strategy</td>
+</tr>
+<tr>
+<td>iv_object_name</td>
+<td>string</td>
+<td>Name of the IV object linked to this order</td>
+</tr>
+<tr>
+<td>instrument_id</td>
+<td>integer</td>
+<td>Internal ID of the instrument being traded</td>
+</tr>
+<tr>
+<td>exchange_segment</td>
+<td>string</td>
+<td>Exchange segment (e.g., NSEFO, BSECM)</td>
+</tr>
+<tr>
+<td>exchange_instrument_id</td>
+<td>integer</td>
+<td>Instrument ID used by the exchange</td>
+</tr>
+<tr>
+<td>instrument_name</td>
+<td>string</td>
+<td>Symbol or name of the instrument</td>
+</tr>
+<tr>
+<td>instrument_type</td>
+<td>integer</td>
+<td>Type of instrument (Equity, Futures, Options, etc.)</td>
+</tr>
+<tr>
+<td>blitz_order_id</td>
+<td>integer</td>
+<td>Order ID in Blitz system</td>
+</tr>
+<tr>
+<td>exchange_order_id</td>
+<td>string</td>
+<td>Exchange-assigned order ID</td>
+</tr>
+<tr>
+<td>execution_id</td>
+<td>string</td>
+<td>Execution ID for trades generated by this order</td>
+</tr>
+<tr>
+<td>account</td>
+<td>string</td>
+<td>Account under which the order was placed</td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>string</td>
+<td>Client ID who placed the order</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>Type of order (LIMIT, MARKET, STOP, etc.)</td>
+</tr>
+<tr>
+<td>order_side</td>
+<td>string</td>
+<td>Side of the order: BUY or SELL</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Current status of the order (OPEN, CANCELLED, FILLED, etc.)</td>
+</tr>
+<tr>
+<td>order_quantity</td>
+<td>number</td>
+<td>Quantity of the order</td>
+</tr>
+<tr>
+<td>order_price</td>
+<td>number</td>
+<td>Price specified for the order</td>
+</tr>
+<tr>
+<td>order_stop_price</td>
+<td>number</td>
+<td>Stop price, if applicable</td>
+</tr>
+<tr>
+<td>order_trigger_price</td>
+<td>number</td>
+<td>Trigger price for conditional orders</td>
+</tr>
+<tr>
+<td>last_traded_quantity</td>
+<td>number</td>
+<td>Quantity executed in the last trade</td>
+</tr>
+<tr>
+<td>last_traded_price</td>
+<td>number</td>
+<td>Price executed in the last trade</td>
+</tr>
+<tr>
+<td>cumulative_quantity</td>
+<td>number</td>
+<td>Total quantity executed</td>
+</tr>
+<tr>
+<td>leaves_quantity</td>
+<td>number</td>
+<td>Quantity remaining to be executed</td>
+</tr>
+<tr>
+<td>tif</td>
+<td>string</td>
+<td>Time-in-force (GFD, GTC, IOC, FOK, GTD)</td>
+</tr>
+<tr>
+<td>order_expiry_date</td>
+<td>integer</td>
+<td>Expiry date of the order</td>
+</tr>
+<tr>
+<td>order_disclosed_quantity</td>
+<td>number</td>
+<td>Disclosed quantity for iceberg orders</td>
+</tr>
+<tr>
+<td>minimum_quantity</td>
+<td>number</td>
+<td>Minimum quantity allowed per execution</td>
+</tr>
+<tr>
+<td>order_generated_date_time</td>
+<td>integer</td>
+<td>Timestamp when order was generated</td>
+</tr>
+<tr>
+<td>last_request_date_time</td>
+<td>integer</td>
+<td>Timestamp of the last modification request</td>
+</tr>
+<tr>
+<td>exchange_transact_time</td>
+<td>integer</td>
+<td>Exchange timestamp for the transaction</td>
+</tr>
+<tr>
+<td>order_modification_count</td>
+<td>number</td>
+<td>Number of modifications made</td>
+</tr>
+<tr>
+<td>order_trade_count</td>
+<td>number</td>
+<td>Number of trades executed</td>
+</tr>
+<tr>
+<td>average_traded_price</td>
+<td>number</td>
+<td>Average price for executed trades</td>
+</tr>
+<tr>
+<td>average_traded_value</td>
+<td>number</td>
+<td>Total value of executed trades</td>
+</tr>
+<tr>
+<td>is_fictive_order</td>
+<td>boolean</td>
+<td>True if the order is simulated/fictive</td>
+</tr>
+<tr>
+<td>reject_type</td>
+<td>string</td>
+<td>Type of rejection, if any</td>
+</tr>
+<tr>
+<td>reject_type_reason</td>
+<td>string</td>
+<td>Reason for rejection</td>
+</tr>
+<tr>
+<td>order_tag</td>
+<td>string</td>
+<td>Optional tag for order categorization</td>
+</tr>
+<tr>
+<td>algo_id</td>
+<td>string</td>
+<td>Algorithm ID if placed via algo</td>
+</tr>
+<tr>
+<td>algo_category_id</td>
+<td>string</td>
+<td>Algorithm category ID</td>
+</tr>
+<tr>
+<td>clearing_firm_id</td>
+<td>string</td>
+<td>Clearing firm ID</td>
+</tr>
+<tr>
+<td>pan_id</td>
+<td>string</td>
+<td>PAN ID of the client</td>
+</tr>
+<tr>
+<td>is_order_completed</td>
+<td>boolean</td>
+<td>True if order is completed</td>
+</tr>
+<tr>
+<td>user_text</td>
+<td>string</td>
+<td>Optional user notes</td>
+</tr>
+<tr>
+<td>execution_type</td>
+<td>string</td>
+<td>Execution type (New, PartialFill, Fill, Cancelled)</td>
+</tr>
+<tr>
+<td>strategy_tag</td>
+<td>string</td>
+<td>Tag assigned to the strategy</td>
+</tr>
+<tr>
+<td>sequence_number</td>
+<td>number</td>
+<td>Sequence number of the order in the system</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-place-an-order">3. Place an Order<a class="headerlink" href="#3-place-an-order" title="Permanent link">&para;</a></h2>
+<p>This endpoint allows you to submit a new order to the OMS trading system.
+Orders can be placed across supported instruments and exchanges, with full control over price, quantity, type, and validity.
+When an order is submitted, the system validates it for trading session availability, risk checks, and sufficient margin before routing it for execution.</p>
+<blockquote>
+<p>Note:Successful API submission does not guarantee execution at the exchange. The response only confirms that the order has been registered with the OMS system.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;http://api.blitz.com/api/order/placeOrder&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;accept: */*&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer YOUR_JWT_TOKEN&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;Request JSON&#39;</span>
+</code></pre></div>
+<h4 id="request-body">Request Body<a class="headerlink" href="#request-body" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;product&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NRML&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tif&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GFD&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">150.5</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;orderType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Limit&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// &quot;instrumentId&quot;: 1010010000010666,</span>
+<span class="w">    </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NSECM|PNB&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">&quot;orderSide&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;disclosedQuantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stopPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CLIENT_001&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tiF_GTD_Date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-10-08&quot;</span><span class="p">,</span>
+
+<span class="w">  </span><span class="p">}</span><span class="err">&#39;</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Note</strong>
+    - Either <code>instrumentId</code> <strong>or</strong> <code>symbol</code> must be provided in the request.<br />
+        If <code>symbol</code> is sent, the system will automatically fetch the corresponding <code>instrumentId</code>.<br />
+        If <code>instrumentId</code> is sent, the system will verify its validity before placing the order.
+    - If both are sent, <code>instrumentId</code> will take priority.  </p>
+</blockquote>
+<h4 id="response-body">Response Body<a class="headerlink" href="#response-body" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Request processed successfully&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;blitzOrderId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23071859690000006</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="field-descriptions_1">Field Descriptions<a class="headerlink" href="#field-descriptions_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>quantity</td>
+<td>number</td>
+<td>Quantity of the order to be placed</td>
+</tr>
+<tr>
+<td>product</td>
+<td>string</td>
+<td>Product type for the order: MIS, NRML, CNC, MTF, or NONE</td>
+</tr>
+<tr>
+<td>tif</td>
+<td>string</td>
+<td>Time-in-force for the order: GFD, GTC, IOC, FOK, GTD, or None</td>
+</tr>
+<tr>
+<td>price</td>
+<td>number</td>
+<td>Price at which the order should be executed</td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>string</td>
+<td>Type of order: Market, Limit, Stop, StopLimit, or Unknown</td>
+</tr>
+<tr>
+<td>instrumentId</td>
+<td>integer</td>
+<td>Internal ID of the instrument to trade</td>
+</tr>
+<tr>
+<td>orderSide</td>
+<td>string</td>
+<td>Side of the order: Buy or Sell</td>
+</tr>
+<tr>
+<td>disclosedQuantity</td>
+<td>number</td>
+<td>Quantity disclosed for iceberg orders</td>
+</tr>
+<tr>
+<td>stopPrice</td>
+<td>number</td>
+<td>Stop price for stop or stop-limit orders</td>
+</tr>
+<tr>
+<td>clientId</td>
+<td>string</td>
+<td>ID of the client placing the order</td>
+</tr>
+<tr>
+<td>tiF_GTD_Date</td>
+<td>string</td>
+<td>Expiry date for GTD orders in YYYY-MM-DD format</td>
+</tr>
+<tr>
+<td>positionEffectOrderFlag</td>
+<td>boolean</td>
+<td>Flag indicating whether this order opens or closes a position</td>
+</tr>
+<tr>
+<td>exchangeTradingSessionOrderFlag</td>
+<td>boolean</td>
+<td>Flag specifying the exchange trading session (Pre-open, Normal, Pre-close, etc.)</td>
+</tr>
+<tr>
+<td>isFictive</td>
+<td>boolean</td>
+<td>True if the order is simulated/fictive (not a real order)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-codes">Response Codes<a class="headerlink" href="#response-codes" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200</strong></td>
+<td><strong>Order successfully placed.</strong> The order has been accepted and registered in the OMS system.</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td><strong>Bad Request.</strong> One or more parameters are invalid or missing in the request body.</td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td><strong>Unauthorized.</strong> The request is missing a valid JWT token or the token has expired.</td>
+</tr>
+<tr>
+<td><strong>403</strong></td>
+<td><strong>Forbidden.</strong> The order cannot be placed due to insufficient margin, risk checks, or permissions.</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td><strong>Not Found.</strong> The specified instrument or client ID does not exist.</td>
+</tr>
+<tr>
+<td><strong>500</strong></td>
+<td><strong>Internal Server Error.</strong> A system or exchange-level error occurred while processing the order.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Tip for Placing Orders 
+-  Always confirm the <strong>order status</strong> after placement using the returned <code>orderId</code> or <code>exchangeOrderId</code>.<br />
+-  Ensure <strong>sufficient margin/funds</strong> are available before placing the order to prevent rejections.<br />
+-  Place orders <strong>only during active market hours</strong> for faster acknowledgment and execution.    </p>
+</blockquote>
+<h2 id="4-modify-order">4. Modify Order<a class="headerlink" href="#4-modify-order" title="Permanent link">&para;</a></h2>
+<p>The <strong>Modify Order</strong> endpoint allows you to update an existing order’s parameters such as <strong>quantity</strong>, <strong>price</strong>, <strong>stop price</strong>, or <strong>validity</strong>.<br />
+Use this API to adjust open or pending orders before they are executed at the exchange.</p>
+<blockquote>
+<p>Note
+    Only orders in <em>open</em> or <em>pending</em> states can be modified.<br />
+    &gt; Once an order is executed or cancelled, modification requests will be rejected.
+    - After modification, query the <a href="#fetching-orders">orders</a> to confirm that the changes were successfully applied. </p>
+</blockquote>
+<hr />
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span><span class="s1">&#39;PUT&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;http://api.blitz.com/api/order/modifyOrder&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;accept: */*&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &lt;your_jwt_token&gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;Request Json&#39;</span>
+</code></pre></div>
+<h4 id="request-body_1">Request Body<a class="headerlink" href="#request-body_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;modifiedOrderQuantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;orderType&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;instrumentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000002885</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;disclosedQuantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;stopPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tif&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GFD&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exchangeOrderId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3084826041727955</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1422</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;TiF_GTD_Date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-12-31&quot;</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="field-descriptions_2">Field Descriptions<a class="headerlink" href="#field-descriptions_2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>modifiedOrderQuantity</td>
+<td>number</td>
+<td>Updated quantity of the order</td>
+</tr>
+<tr>
+<td>price</td>
+<td>number</td>
+<td>Updated price at which the order should be executed</td>
+</tr>
+<tr>
+<td>exchangeOrderId</td>
+<td>integer</td>
+<td>Exchange-assigned order ID identifying which order to modify</td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>string</td>
+<td>Type of order: Market, Limit, Stop, StopLimit, or Unknown</td>
+</tr>
+<tr>
+<td>instrumentId</td>
+<td>integer</td>
+<td>Internal ID of the instrument being traded</td>
+</tr>
+<tr>
+<td>disclosedQuantity</td>
+<td>number</td>
+<td>Updated disclosed quantity for iceberg orders</td>
+</tr>
+<tr>
+<td>stopPrice</td>
+<td>number</td>
+<td>Updated stop price for stop or stop-limit orders</td>
+</tr>
+<tr>
+<td>tif</td>
+<td>string</td>
+<td>Time-in-force for the order: GFD, GTC, IOC, FOK, GTD, or None</td>
+</tr>
+<tr>
+<td>tiF_GTD_Date</td>
+<td>string</td>
+<td>Expiry date for GTD orders in <code>YYYY-MM-DD</code> format</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-body_1">Response Body<a class="headerlink" href="#response-body_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Request processed successfully&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;blitzOrderId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23071859690000006</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="response-codes_1">Response Codes<a class="headerlink" href="#response-codes_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200</strong></td>
+<td><strong>Order modified successfully.</strong> The order update has been accepted by the Blitz system.</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td><strong>Bad Request.</strong> One or more parameters are invalid or missing.</td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td><strong>Unauthorized.</strong> Missing or invalid JWT token.</td>
+</tr>
+<tr>
+<td><strong>403</strong></td>
+<td><strong>Forbidden.</strong> The order cannot be modified (already executed or cancelled).</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td><strong>Not Found.</strong> The specified <code>exchangeOrderId</code> or instrument does not exist.</td>
+</tr>
+<tr>
+<td><strong>500</strong></td>
+<td><strong>Internal Server Error.</strong> A system or exchange-level error occurred while processing the modification.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Tip for Modifying Orders
+- Always verify the <strong>current order status</strong> before attempting to modify it. Only open or pending orders can be changed.<br />
+- Modify orders <strong>during market hours</strong> to ensure updates are accepted and reflected quickly.  <br />
+- Avoid frequent or large modifications in short intervals to prevent exchange-level throttling or rejection.<br />
+- Confirm the <strong>modified parameters</strong> (price, quantity, stop price) meet exchange and instrument-specific limits.   </p>
+</blockquote>
+<h2 id="cancel-order">5. Cancel Order<a class="headerlink" href="#cancel-order" title="Permanent link">&para;</a></h2>
+<p>The <strong>Cancel Order</strong> endpoint allows you to cancel an existing open or pending order using its unique <code>InstrumentId</code> and <code>ExchangeOrderId</code>.</p>
+<p>:::note
+Only orders that are in <em>open</em> or <em>pending</em> state can be cancelled.  </p>
+<blockquote>
+<p>Orders that are already executed or expired cannot be cancelled.
+:::</p>
+</blockquote>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InstrumentId</td>
+<td>integer</td>
+<td>Internal ID of the instrument for which the order was placed</td>
+</tr>
+<tr>
+<td>ExchangeOrderId</td>
+<td>number</td>
+<td>Exchange-assigned ID of the order to cancel</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span><span class="s1">&#39;DELETE&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;http://api.blitz.com/api/order/cancelOrder?InstrumentId=123&amp;ExchangeOrderId=456&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;accept: */*&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer YOUR_JWT_TOKEN&#39;</span>
+</code></pre></div>
+<h4 id="response">Response<a class="headerlink" href="#response" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Order cancelled successfully.&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="response-codes_2">Response Codes<a class="headerlink" href="#response-codes_2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200</strong></td>
+<td><strong>Order cancelled successfully.</strong> The order has been removed from the OMS system.</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td><strong>Bad Request.</strong> Invalid or missing parameters.</td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td><strong>Unauthorized.</strong> Missing or invalid JWT token.</td>
+</tr>
+<tr>
+<td><strong>403</strong></td>
+<td><strong>Forbidden.</strong> The order cannot be cancelled (already executed or expired).</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td><strong>Not Found.</strong> The specified <code>ExchangeOrderId</code> or instrument does not exist.</td>
+</tr>
+<tr>
+<td><strong>500</strong></td>
+<td><strong>Internal Server Error.</strong> A system or exchange-level error occurred while processing the cancellation.</td>
+</tr>
+</tbody>
+</table>
+<p>:::tip Tip for Cancelling Orders</p>
+<ul>
+<li>Confirm that the order is in an <strong>open or pending</strong> state before attempting cancellation. Executed or expired orders cannot be cancelled.  </li>
+<li>Use the correct combination of <strong>InstrumentId</strong> and <strong>ExchangeOrderId</strong> to ensure the intended order is cancelled.   </li>
+<li>Always verify the <strong>cancellation status</strong> using the order status or history endpoint after sending the request.  </li>
+<li>Avoid sending multiple cancellation requests for the same order to prevent duplicate or conflicting actions.<br />
+:::</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> Ensure the JWT token is valid and included in the <code>Authorization</code> header. Without it, the server will respond with <code>401 Unauthorized</code>.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "content.code.copy", "navigation.sections", "navigation.tracking", "toc.follow"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

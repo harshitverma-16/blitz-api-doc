@@ -1,0 +1,1169 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../orders/">
+      
+      
+        <link rel="next" href="../positions/">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Trades - Blitz API Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fetching-trades" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Blitz API Documentation" class="md-header__button md-logo" aria-label="Blitz API Documentation" data-md-component="logo">
+      
+  <img src="../icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Blitz API Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Trades
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Blitz API Documentation" class="md-nav__button md-logo" aria-label="Blitz API Documentation" data-md-component="logo">
+      
+  <img src="../icon.png" alt="logo">
+
+    </a>
+    Blitz API Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Trading APIs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Trading APIs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orders
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Trades
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Trades
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fetching-trades" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Trades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fetching-trades-by-boid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trades by BlitzOrderId (BOID)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trades by BlitzOrderId (BOID)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#field-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field Descriptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../positions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Positions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Market Data APIs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Market Data APIs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Last Trading Price
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../optionchain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Option Chain
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../marketquote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market Quote
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../historicaldata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Historical Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SDK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fetching-trades" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Trades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fetching-trades-by-boid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trades by BlitzOrderId (BOID)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trades by BlitzOrderId (BOID)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#field-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field Descriptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Trades</h1>
+
+<p>The <strong>Trades API</strong> lets you retrieve all trade details executed under a given entity, strategy, or client.<br />
+Using this API, you can monitor executed orders, pending trades, and their execution details in real time.</p>
+<p>These endpoints let you <strong>retrieve, filter, and monitor trade executions</strong> efficiently.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Endpoint</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><a href="#fetching-trades"><code>trades</code></a></td>
+<td>Retrieve the list of all trades.</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><a href="#fetching-trades-by-boid"><code>trades/{boid}</code></a></td>
+<td>Retrieve trade details for a specific BlitzOrderId.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="glossary-notes"><strong>Glossary / Notes</strong><a class="headerlink" href="#glossary-notes" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>trades</code> → Refers to individual trade executions associated with strategies or entities.  </li>
+<li>Each trade represents one completed or pending transaction within a trading strategy.  </li>
+<li>Common fields like <code>order_side</code>, <code>status</code>, and <code>execution_type</code> help track the lifecycle of a trade.  </li>
+<li>Use filtering parameters (e.g., <code>entity_id</code>, <code>client_id</code>, <code>strategy_id</code>) to narrow results.</li>
+</ul>
+<hr />
+<h2 id="fetching-trades"><strong>1. Trades</strong><a class="headerlink" href="#fetching-trades" title="Permanent link">&para;</a></h2>
+<p>Retrieve all trades currently recorded for a given client, entity, or strategy instance.</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span><span class="s1">&#39;GET&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;http://api.blitz.com/api/v1/trades&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;accept: application/json&#39;</span>
+</code></pre></div>
+<h4 id="response">Response<a class="headerlink" href="#response" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;163d2248-e81b-4cb3-9482-bb65e3e4ab3f&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STRAT123&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_instance_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INST001&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_instance_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Momentum_Strategy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Momentum Trading&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iv_object_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NIFTY_FUT&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000002885</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_segment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NSEFO&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2885</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instrument_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NIFTY24OCTFUT&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instrument_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;blitz_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9001</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_order_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EX123456&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;execution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EXEC001&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACC001&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SIDD09&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LIMIT&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_side&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Filled&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">22450.00</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_stop_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_trigger_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_traded_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">22450.00</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cumulative_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;leaves_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tif&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DAY&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20251013</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_disclosed_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;minimum_quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_generated_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1728796800</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_request_date_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1728797000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exchange_transact_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1728797050</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_modification_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_trade_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;average_traded_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">22450.00</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;average_traded_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1122500.00</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;is_fictive_order&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;reject_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;reject_type_reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;StrategyOrder&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ctcl_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CTCL001&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;algo_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALGO001&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;algo_category_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CAT001&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;clearing_firm_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CLF001&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pan_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ABCDE1234F&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;is_order_completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;user_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Auto-executed by Momentum Strategy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;execution_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;REGULAR&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;strategy_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOMENTUM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sequence_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10001</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<h2 id="fetching-trades-by-boid">Trades by BlitzOrderId (BOID)<a class="headerlink" href="#fetching-trades-by-boid" title="Permanent link">&para;</a></h2>
+<p>The <strong>Trades by BOID API</strong> lets you retrieve detailed trade execution information for a specific <strong>Blitz Order ID (BOID)</strong>.<br />
+Using this endpoint, you can monitor the lifecycle, fills, and execution data of an individual order in real time.</p>
+<p>This API is particularly useful for <strong>audit trails</strong>, <strong>strategy performance tracking</strong>, and <strong>trade reconciliation</strong>.</p>
+<h4 id="glossary-notes_1"><strong>Glossary / Notes</strong><a class="headerlink" href="#glossary-notes_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>boid</code> → Refers to the <strong>BlitzOrderId</strong>, a unique identifier assigned to every order placed in the OMS system.  </li>
+<li>This endpoint returns only the trades associated with that <strong>specific BOID</strong>.  </li>
+<li>Common fields such as <code>execution_type</code>, <code>order_side</code>, and <code>status</code> help understand the execution progress.  </li>
+<li>Use this API to trace the <strong>status</strong>, <strong>execution history</strong>, and <strong>filled quantity</strong> of any given order.</li>
+</ul>
+<hr />
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span><span class="s1">&#39;GET&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;http://api.blitz.com/api/v1/trades/{boid}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;accept: application/json&#39;</span>
+<span class="w">  </span><span class="sb">```</span>
+
+<span class="c1">#### Response</span>
+<span class="sb">```</span>json
+<span class="o">[</span>
+<span class="w">  </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="m">5</span>,
+<span class="w">    </span><span class="s2">&quot;entity_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;163d2248-e81b-4cb3-9482-bb65e3e4ab3f&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;strategy_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;36250ee3-ad08-4e09-862f-83deee8cdef9&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;strategy_instance_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;9e1be6c0-c44b-4eb4-a159-b47af104422a&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;strategy_instance_name&quot;</span>:<span class="w"> </span><span class="s2">&quot;IDEA|SIDD09|SIDDHESH&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;strategy_name&quot;</span>:<span class="w"> </span><span class="s2">&quot;Manual Trading&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;iv_object_name&quot;</span>:<span class="w"> </span><span class="s2">&quot;IDEA&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;instrument_id&quot;</span>:<span class="w"> </span><span class="m">1010010000014366</span>,
+<span class="w">    </span><span class="s2">&quot;exchange_segment&quot;</span>:<span class="w"> </span><span class="s2">&quot;NSECM&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;exchange_instrument_id&quot;</span>:<span class="w"> </span><span class="m">1010010000014366</span>,
+<span class="w">    </span><span class="s2">&quot;instrument_name&quot;</span>:<span class="w"> </span><span class="s2">&quot;IDEA&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;instrument_type&quot;</span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">    </span><span class="s2">&quot;blitz_order_id&quot;</span>:<span class="w"> </span><span class="m">1914165469</span>,
+<span class="w">    </span><span class="s2">&quot;exchange_order_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;3104043042150699&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;execution_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;3104043042156643&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;account&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;client_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;SIDD09&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;order_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;Limit&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;order_side&quot;</span>:<span class="w"> </span><span class="s2">&quot;Buy&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;status&quot;</span>:<span class="w"> </span><span class="s2">&quot;Filled&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;order_quantity&quot;</span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">    </span><span class="s2">&quot;order_price&quot;</span>:<span class="w"> </span><span class="m">9</span>,
+<span class="w">    </span><span class="s2">&quot;order_stop_price&quot;</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">    </span><span class="s2">&quot;order_trigger_price&quot;</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">    </span><span class="s2">&quot;last_traded_quantity&quot;</span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">    </span><span class="s2">&quot;last_traded_price&quot;</span>:<span class="w"> </span><span class="m">8</span>.31,
+<span class="w">    </span><span class="s2">&quot;cumulative_quantity&quot;</span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">    </span><span class="s2">&quot;leaves_quantity&quot;</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">    </span><span class="s2">&quot;tif&quot;</span>:<span class="w"> </span><span class="s2">&quot;GFD&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;order_expiry_date&quot;</span>:<span class="w"> </span><span class="m">1761996937257</span>,
+<span class="w">    </span><span class="s2">&quot;order_disclosed_quantity&quot;</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">    </span><span class="s2">&quot;minimum_quantity&quot;</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">    </span><span class="s2">&quot;order_generated_date_time&quot;</span>:<span class="w"> </span><span class="m">1761996937257</span>,
+<span class="w">    </span><span class="s2">&quot;last_request_date_time&quot;</span>:<span class="w"> </span><span class="m">1761996937257</span>,
+<span class="w">    </span><span class="s2">&quot;exchange_transact_time&quot;</span>:<span class="w"> </span><span class="m">1761996937000</span>,
+<span class="w">    </span><span class="s2">&quot;order_modification_count&quot;</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">    </span><span class="s2">&quot;order_trade_count&quot;</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">    </span><span class="s2">&quot;average_traded_price&quot;</span>:<span class="w"> </span><span class="m">8</span>.31,
+<span class="w">    </span><span class="s2">&quot;average_traded_value&quot;</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">    </span><span class="s2">&quot;is_fictive_order&quot;</span>:<span class="w"> </span>false,
+<span class="w">    </span><span class="s2">&quot;reject_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;None&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;reject_type_reason&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;order_tag&quot;</span>:<span class="w"> </span><span class="s2">&quot;NormalOrder&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;ctcl_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;201301001001000&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;algo_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;0&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;algo_category_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;0&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;clearing_firm_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;pan_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;GABPB5317L&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;is_order_completed&quot;</span>:<span class="w"> </span>true,
+<span class="w">    </span><span class="s2">&quot;user_text&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;execution_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;Fill&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;strategy_tag&quot;</span>:<span class="w"> </span><span class="s2">&quot;General&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;sequence_number&quot;</span>:<span class="w"> </span><span class="m">0</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
+<h3 id="field-descriptions">Field Descriptions<a class="headerlink" href="#field-descriptions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Internal unique ID of the order</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>string</td>
+<td>ID of the entity (user) who placed the order</td>
+</tr>
+<tr>
+<td>strategy_id</td>
+<td>string</td>
+<td>Strategy associated with the order, if any</td>
+</tr>
+<tr>
+<td>strategy_instance_id</td>
+<td>string</td>
+<td>Instance of the strategy executing the order</td>
+</tr>
+<tr>
+<td>strategy_instance_name</td>
+<td>string</td>
+<td>Name of the strategy instance</td>
+</tr>
+<tr>
+<td>strategy_name</td>
+<td>string</td>
+<td>Name of the strategy</td>
+</tr>
+<tr>
+<td>iv_object_name</td>
+<td>string</td>
+<td>Name of the IV object linked to this order</td>
+</tr>
+<tr>
+<td>instrument_id</td>
+<td>integer</td>
+<td>Internal ID of the instrument being traded</td>
+</tr>
+<tr>
+<td>exchange_segment</td>
+<td>string</td>
+<td>Exchange segment (e.g., NSEFO, BSECM)</td>
+</tr>
+<tr>
+<td>exchange_instrument_id</td>
+<td>integer</td>
+<td>Instrument ID used by the exchange</td>
+</tr>
+<tr>
+<td>instrument_name</td>
+<td>string</td>
+<td>Symbol or name of the instrument</td>
+</tr>
+<tr>
+<td>instrument_type</td>
+<td>integer</td>
+<td>Type of instrument (Equity, Futures, Options, etc.)</td>
+</tr>
+<tr>
+<td>blitz_order_id</td>
+<td>integer</td>
+<td>Order ID in OMS system</td>
+</tr>
+<tr>
+<td>exchange_order_id</td>
+<td>string</td>
+<td>Exchange-assigned order ID</td>
+</tr>
+<tr>
+<td>execution_id</td>
+<td>string</td>
+<td>Execution ID for trades generated by this order</td>
+</tr>
+<tr>
+<td>account</td>
+<td>string</td>
+<td>Account under which the order was placed</td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>string</td>
+<td>Client ID who placed the order</td>
+</tr>
+<tr>
+<td>order_type</td>
+<td>string</td>
+<td>Type of order (LIMIT, MARKET, STOP, etc.)</td>
+</tr>
+<tr>
+<td>order_side</td>
+<td>string</td>
+<td>Side of the order: BUY or SELL</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Current status of the order (OPEN, CANCELLED, FILLED, etc.)</td>
+</tr>
+<tr>
+<td>order_quantity</td>
+<td>number</td>
+<td>Quantity of the order</td>
+</tr>
+<tr>
+<td>order_price</td>
+<td>number</td>
+<td>Price specified for the order</td>
+</tr>
+<tr>
+<td>order_stop_price</td>
+<td>number</td>
+<td>Stop price, if applicable</td>
+</tr>
+<tr>
+<td>order_trigger_price</td>
+<td>number</td>
+<td>Trigger price for conditional orders</td>
+</tr>
+<tr>
+<td>last_traded_quantity</td>
+<td>number</td>
+<td>Quantity executed in the last trade</td>
+</tr>
+<tr>
+<td>last_traded_price</td>
+<td>number</td>
+<td>Price executed in the last trade</td>
+</tr>
+<tr>
+<td>cumulative_quantity</td>
+<td>number</td>
+<td>Total quantity executed</td>
+</tr>
+<tr>
+<td>leaves_quantity</td>
+<td>number</td>
+<td>Quantity remaining to be executed</td>
+</tr>
+<tr>
+<td>tif</td>
+<td>string</td>
+<td>Time-in-force (GFD, GTC, IOC, FOK, GTD)</td>
+</tr>
+<tr>
+<td>order_expiry_date</td>
+<td>integer</td>
+<td>Expiry date of the order</td>
+</tr>
+<tr>
+<td>order_disclosed_quantity</td>
+<td>number</td>
+<td>Disclosed quantity for iceberg orders</td>
+</tr>
+<tr>
+<td>minimum_quantity</td>
+<td>number</td>
+<td>Minimum quantity allowed per execution</td>
+</tr>
+<tr>
+<td>order_generated_date_time</td>
+<td>integer</td>
+<td>Timestamp when order was generated</td>
+</tr>
+<tr>
+<td>last_request_date_time</td>
+<td>integer</td>
+<td>Timestamp of the last modification request</td>
+</tr>
+<tr>
+<td>exchange_transact_time</td>
+<td>integer</td>
+<td>Exchange timestamp for the transaction</td>
+</tr>
+<tr>
+<td>order_modification_count</td>
+<td>number</td>
+<td>Number of modifications made</td>
+</tr>
+<tr>
+<td>order_trade_count</td>
+<td>number</td>
+<td>Number of trades executed</td>
+</tr>
+<tr>
+<td>average_traded_price</td>
+<td>number</td>
+<td>Average price for executed trades</td>
+</tr>
+<tr>
+<td>average_traded_value</td>
+<td>number</td>
+<td>Total value of executed trades</td>
+</tr>
+<tr>
+<td>is_fictive_order</td>
+<td>boolean</td>
+<td>True if the order is simulated/fictive</td>
+</tr>
+<tr>
+<td>reject_type</td>
+<td>string</td>
+<td>Type of rejection, if any</td>
+</tr>
+<tr>
+<td>reject_type_reason</td>
+<td>string</td>
+<td>Reason for rejection</td>
+</tr>
+<tr>
+<td>order_tag</td>
+<td>string</td>
+<td>Optional tag for order categorization</td>
+</tr>
+<tr>
+<td>algo_id</td>
+<td>string</td>
+<td>Algorithm ID if placed via algo</td>
+</tr>
+<tr>
+<td>algo_category_id</td>
+<td>string</td>
+<td>Algorithm category ID</td>
+</tr>
+<tr>
+<td>clearing_firm_id</td>
+<td>string</td>
+<td>Clearing firm ID</td>
+</tr>
+<tr>
+<td>pan_id</td>
+<td>string</td>
+<td>PAN ID of the client</td>
+</tr>
+<tr>
+<td>is_order_completed</td>
+<td>boolean</td>
+<td>True if order is completed</td>
+</tr>
+<tr>
+<td>user_text</td>
+<td>string</td>
+<td>Optional user notes</td>
+</tr>
+<tr>
+<td>execution_type</td>
+<td>string</td>
+<td>Execution type (New, PartialFill, Fill, Cancelled)</td>
+</tr>
+<tr>
+<td>strategy_tag</td>
+<td>string</td>
+<td>Tag assigned to the strategy</td>
+</tr>
+<tr>
+<td>sequence_number</td>
+<td>number</td>
+<td>Sequence number of the order in the system</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "content.code.copy", "navigation.sections", "navigation.tracking", "toc.follow"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
