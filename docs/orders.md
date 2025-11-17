@@ -12,13 +12,13 @@ These endpoints let you place, modify, cancel, and retrieve orders efficiently.
 | PUT      | [orders/modifyOrder](#modify-order) | Modify an open or pending order. |
 | DELETE   | [order/cancelOrder](#cancel-order) | Cancel an open or pending order. |
 
-### Glossary / Notes { .no-toc }
+#### Glossary / Notes { .no-toc }
 - `orders` → Refers to all orders for the day.  
 - `placeOrder` → Endpoint to create a new order.  
 - `modifyOrder` → Endpoint to update an existing order.  
 - `cancelOrder` → Endpoint to delete/cancel an order.
 
-### OMS API: Order-Related Constants
+#### OMS API: Order-Related Constants
 
 OMS API uses several enum constants when placing, managing, and tracking orders. These constants help standardize order types, sides, statuses, and execution details.
 

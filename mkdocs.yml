@@ -23,8 +23,9 @@ markdown_extensions:
   - attr_list
   - pymdownx.details
   - pymdownx.superfences
-  - toc:
-      toc_depth: 2
+  - toc:                # built-in Markdown TOC extension
+      permalink: true
+      toc_depth: 3
 
 nav:
 
@@ -41,4 +42,6 @@ nav:
     - Option Chain: optionchain.md
     - Market Quote: marketquote.md
     - Historical Data: historicaldata.md
+
+  - SDK: sdk.md
   
