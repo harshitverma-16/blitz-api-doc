@@ -56,10 +56,10 @@ curl -X 'GET' \
   'http://api.blitz.com/api/order' \
   -H 'accept: */*'
 ```
-### Request Structure
+#### Request Structure
 - No Body
 
-### Response Structure
+#### Response Structure
 
 <details>
 <summary>Click to view Order List JSON Body</summary>
@@ -300,10 +300,10 @@ curl -X 'GET' \
   -H 'accept: application/json' \
   -H 'Authorization: Bearer YOUR_JWT_TOKEN'
 ```
-### Request Structure
+#### Request Structure
 - No Body Required.
 
-### Response Structuer
+#### Response Structuer
 
 <details>
 <summary>Click to view Order by BlitzOrderID JSON Body</summary>
@@ -480,7 +480,7 @@ curl -X 'GET' \
 ```
 </details>
 
-### Field Descriptions
+#### Field Descriptions
 
 | Field | Type | Description |
 |-------|------|------------|
@@ -555,7 +555,7 @@ curl -X 'POST' \
   -d 'Request JSON'
 
 ```
-### Request Body
+#### Request Body
 
 ```json
 {
@@ -583,7 +583,7 @@ curl -X 'POST' \
     - If both are sent, `instrumentId` will take priority.  
 
 
-### Response Body
+#### Response Body
 ```json
 {
     "status": "success",
@@ -594,7 +594,7 @@ curl -X 'POST' \
 }
 ```
 
-### Field Descriptions
+#### Field Descriptions
 
 | Field | Type | Description |
 |-------|------|------------|
@@ -613,7 +613,7 @@ curl -X 'POST' \
 | exchangeTradingSessionOrderFlag | boolean | Flag specifying the exchange trading session (Pre-open, Normal, Pre-close, etc.) |
 | isFictive | boolean | True if the order is simulated/fictive (not a real order) |
 
-### Response Codes
+#### Response Codes
 
 | HTTP Code | Description |
 |------------|-------------|
@@ -653,7 +653,7 @@ curl -X 'PUT' \
   -d 'Request Json'
 ```
 
-### Request Body
+#### Request Body
 
 ```json
 {
@@ -669,7 +669,7 @@ curl -X 'PUT' \
   "TiF_GTD_Date": "2025-12-31"  
 }
 ```
-### Field Descriptions
+#### Field Descriptions
 
 | Field | Type | Description |
 |-------|------|------------|
@@ -683,7 +683,7 @@ curl -X 'PUT' \
 | tif | string | Time-in-force for the order: GFD, GTC, IOC, FOK, GTD, or None |
 | tiF_GTD_Date | string | Expiry date for GTD orders in `YYYY-MM-DD` format |
 
-### Response Body
+#### Response Body
 ```json
 {
     "status": "success",
@@ -693,7 +693,7 @@ curl -X 'PUT' \
     }
 }
 ```
-### Response Codes
+#### Response Codes
 
 | HTTP Code | Description |
 |------------|-------------|
@@ -719,7 +719,7 @@ Only orders that are in *open* or *pending* state can be cancelled.
 > Orders that are already executed or expired cannot be cancelled.
 :::
 
-### Parameters
+#### Parameters
 
 | Name | Type | Description |
 |------|------|------------|
@@ -732,14 +732,14 @@ curl -X 'DELETE' \
   -H 'accept: */*' \
   -H 'Authorization: Bearer YOUR_JWT_TOKEN'
 ```
-### Response 
+#### Response 
 
 ```json
 {
   "Message": "Order cancelled successfully."
 }
 ```
-### Response Codes
+#### Response Codes
 
 | HTTP Code | Description |
 |------------|-------------|

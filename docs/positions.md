@@ -8,7 +8,7 @@ These endpoints let you retrieve, filter, and monitor positions efficiently.
 
 ---
 
-### Glossary / Notes
+#### Glossary / Notes
 - `positions` → Refers to all holdings for the client/entity.  
 - Quantities:
   - `open_buy_quantity` → Current open buy quantity.  
@@ -73,7 +73,7 @@ curl -X 'GET' \
   -H 'accept: */*'
 ```
 
-### Response
+#### Response
 ```json
 {
     "SIDD09": [

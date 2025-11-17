@@ -30,7 +30,7 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-### Response
+#### Response
 ```json
 [
   {
@@ -112,7 +112,7 @@ curl -X 'GET' \
   -H 'accept: application/json'
   ```
 
-### REsponse
+#### Response
 ```json
 [
   {

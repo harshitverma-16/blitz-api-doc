@@ -46,7 +46,7 @@ The **LTP (Last Traded Price) API** provides real-time last traded price data fo
 ### Successful Response (200 OK)
 ```json
 {
-    {
+    
   "data": {
     "1010010000000025": {
       "InstrumentID": 1010010000000025,
