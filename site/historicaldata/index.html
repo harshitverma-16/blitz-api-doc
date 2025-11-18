@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#historical-data-api" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -474,6 +479,21 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Historical Data
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -486,6 +506,94 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Endpoint
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Headers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Body
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request Body">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#successful-response-200-ok" class="md-nav__link">
+    <span class="md-ellipsis">
+      Successful Response (200 OK)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-response-400-500" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Response (400 / 500)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -538,6 +646,85 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Endpoint
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Headers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Body
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request Body">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#successful-response-200-ok" class="md-nav__link">
+    <span class="md-ellipsis">
+      Successful Response (200 OK)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-response-400-500" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Response (400 / 500)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -553,9 +740,131 @@
 
 
 
-  <h1>Historical Data</h1>
-
-
+<h1 id="historical-data-api">Historical Data API<a class="headerlink" href="#historical-data-api" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Historical Data API provides OHLCV (Open, High, Low, Close, Volume) data for a given instrument over a specified date range and interval. This is useful for charting, backtesting, analytics, and historical market insights.</p>
+<hr />
+<h2 id="endpoint">Endpoint<a class="headerlink" href="#endpoint" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td><strong>/marketfeed/historicalData</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="headers">Headers<a class="headerlink" href="#headers" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Accept</td>
+<td><em>/</em></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="request-body">Request Body<a class="headerlink" href="#request-body" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InstrumentId</td>
+<td>number</td>
+<td>Unique instrument ID for which data is requested</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>FromDate</td>
+<td>string (YYYY-MM-DD)</td>
+<td>Start date for historical data</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>ToDate</td>
+<td>string (YYYY-MM-DD)</td>
+<td>End date for historical data</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Interval</td>
+<td>string</td>
+<td>Candle interval (e.g., <code>"1m"</code>, <code>"5m"</code>, <code>"15m"</code>, <code>"1h"</code>, <code>"1d"</code>)</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;InstrumentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000002885</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;FromDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-01&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;ToDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-10&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1d&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="successful-response-200-ok">Successful Response (200 OK)<a class="headerlink" href="#successful-response-200-ok" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;InstrumentID&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1010010000002885</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;InstrumentName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RELIANCE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1d&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Candles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-01&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Open&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2890.50</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;High&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2912.00</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Low&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2875.10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Close&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2901.25</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Volume&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3289121</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-02&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Open&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2901.25</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;High&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2938.40</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Low&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2895.00</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Close&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2922.30</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Volume&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4120051</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="error-response-400-500">Error Response (400 / 500)<a class="headerlink" href="#error-response-400-500" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;error&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Invalid request parameters.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InstrumentId, FromDate, ToDate, and Interval are required fields.&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 
